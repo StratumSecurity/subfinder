@@ -10,7 +10,7 @@ import (
 
 	jsoniter "github.com/json-iterator/go"
 
-	"github.com/StratumSecurity/subfinderv2/pkg/resolve"
+	"github.com/StratumSecurity/subfinder/v2/pkg/resolve"
 )
 
 // OutputWriter outputs content to writers.

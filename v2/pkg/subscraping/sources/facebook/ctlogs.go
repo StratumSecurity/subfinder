@@ -7,7 +7,7 @@ import (
 	"io"
 	"time"
 
-	"github.com/StratumSecurity/subfinderv2/pkg/subscraping"
+	"github.com/StratumSecurity/subfinder/v2/pkg/subscraping"
 	"github.com/projectdiscovery/gologger"
 	"github.com/projectdiscovery/retryablehttp-go"
 	errorutil "github.com/projectdiscovery/utils/errors"

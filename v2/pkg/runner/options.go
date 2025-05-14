@@ -10,8 +10,8 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/StratumSecurity/subfinderv2/pkg/passive"
-	"github.com/StratumSecurity/subfinderv2/pkg/resolve"
+	"github.com/StratumSecurity/subfinder/v2/pkg/passive"
+	"github.com/StratumSecurity/subfinder/v2/pkg/resolve"
 	"github.com/projectdiscovery/chaos-client/pkg/chaos"
 	"github.com/projectdiscovery/goflags"
 	"github.com/projectdiscovery/gologger"

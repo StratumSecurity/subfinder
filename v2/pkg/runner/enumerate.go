@@ -11,9 +11,9 @@ import (
 
 	"github.com/projectdiscovery/gologger"
 
-	"github.com/StratumSecurity/subfinderv2/pkg/passive"
-	"github.com/StratumSecurity/subfinderv2/pkg/resolve"
-	"github.com/StratumSecurity/subfinderv2/pkg/subscraping"
+	"github.com/StratumSecurity/subfinder/v2/pkg/passive"
+	"github.com/StratumSecurity/subfinder/v2/pkg/resolve"
+	"github.com/StratumSecurity/subfinder/v2/pkg/subscraping"
 )
 
 const maxNumCount = 2

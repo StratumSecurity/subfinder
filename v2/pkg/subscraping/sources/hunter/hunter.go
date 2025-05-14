@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/StratumSecurity/subfinderv2/pkg/subscraping"
+	"github.com/StratumSecurity/subfinder/v2/pkg/subscraping"
 	jsoniter "github.com/json-iterator/go"
 )
 

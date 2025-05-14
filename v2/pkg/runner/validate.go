@@ -6,7 +6,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/StratumSecurity/subfinderv2/pkg/passive"
+	"github.com/StratumSecurity/subfinder/v2/pkg/passive"
 	"github.com/projectdiscovery/gologger"
 	"github.com/projectdiscovery/gologger/formatter"
 	"github.com/projectdiscovery/gologger/levels"

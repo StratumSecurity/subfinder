@@ -6,7 +6,7 @@ import (
 
 	"gopkg.in/yaml.v3"
 
-	"github.com/StratumSecurity/subfinderv2/pkg/passive"
+	"github.com/StratumSecurity/subfinder/v2/pkg/passive"
 	"github.com/projectdiscovery/gologger"
 	fileutil "github.com/projectdiscovery/utils/file"
 )
