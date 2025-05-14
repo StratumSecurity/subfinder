@@ -9,3 +9,5 @@ vendor/
 .devcontainer
 .vscode
 dist
+provider-config.yaml
+config.yaml
