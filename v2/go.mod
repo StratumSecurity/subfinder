@@ -1,4 +1,4 @@
-module github.com/projectdiscovery/subfinder/v2
+module github.com/StratumSecurity/subfinder/v2
 
 go 1.24.0
 

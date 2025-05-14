@@ -4,9 +4,9 @@ import (
 	"net"
 	"strings"
 
+	"github.com/StratumSecurity/subfinderv2/pkg/passive"
+	"github.com/StratumSecurity/subfinderv2/pkg/resolve"
 	"github.com/projectdiscovery/dnsx/libs/dnsx"
-	"github.com/projectdiscovery/subfinder/v2/pkg/passive"
-	"github.com/projectdiscovery/subfinder/v2/pkg/resolve"
 )
 
 // initializePassiveEngine creates the passive engine and loads sources etc

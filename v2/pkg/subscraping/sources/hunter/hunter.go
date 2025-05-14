@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/StratumSecurity/subfinderv2/pkg/subscraping"
 	jsoniter "github.com/json-iterator/go"
-	"github.com/projectdiscovery/subfinder/v2/pkg/subscraping"
 )
 
 type hunterResp struct {

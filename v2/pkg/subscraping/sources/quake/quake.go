@@ -10,7 +10,7 @@ import (
 
 	jsoniter "github.com/json-iterator/go"
 
-	"github.com/projectdiscovery/subfinder/v2/pkg/subscraping"
+	"github.com/StratumSecurity/subfinderv2/pkg/subscraping"
 )
 
 type quakeResults struct {

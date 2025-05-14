@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/projectdiscovery/subfinder/v2/pkg/subscraping"
+	"github.com/StratumSecurity/subfinderv2/pkg/subscraping"
 )
 
 type alienvaultResponse struct {

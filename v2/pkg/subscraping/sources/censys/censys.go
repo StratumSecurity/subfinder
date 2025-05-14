@@ -11,7 +11,7 @@ import (
 
 	jsoniter "github.com/json-iterator/go"
 
-	"github.com/projectdiscovery/subfinder/v2/pkg/subscraping"
+	"github.com/StratumSecurity/subfinderv2/pkg/subscraping"
 )
 
 const (
@@ -26,16 +26,16 @@ type searchRequest struct {
 
 // Response structures for the new API
 type response struct {
-	Result  result `json:"result"`
-	Status  string `json:"status"`
+	Result     result `json:"result"`
+	Status     string `json:"status"`
 	StatusCode int    `json:"status_code"`
 }
 
 type result struct {
-	Query      string  `json:"query"`
-	Total      int     `json:"total"`
-	Hits       []hit   `json:"hits"`
-	Links      links   `json:"links"`
+	Query string `json:"query"`
+	Total int    `json:"total"`
+	Hits  []hit  `json:"hits"`
+	Links links  `json:"links"`
 }
 
 type hit struct {
@@ -65,8 +65,8 @@ type Source struct {
 }
 
 type apiKey struct {
-	token        string // Personal Access Token
-	orgID        string // Organization ID
+	token string // Personal Access Token
+	orgID string // Organization ID
 }
 
 // Run function returns all subdomains found with the service
@@ -91,33 +91,33 @@ func (s *Source) Run(ctx context.Context, domain string, session *subscraping.Se
 		certSearchEndpoint := "https://api.platform.censys.io/v3/global/search/query"
 		cursor := ""
 		currentPage := 1
-		
+
 		// We'll use the domain directly in our specific query below
-		
+
 		for {
 			// Use the correct Censys Query Language syntax with the proper field name
 			// Based on the working curl command, the field name is cert.names
 			specificQuery := fmt.Sprintf("cert.names: \"%s\"", domain)
 			requestBody := fmt.Sprintf(`{"query":"%s"}`, strings.ReplaceAll(specificQuery, `"`, `\"`))
-			
+
 			// Query is ready for API requests
-			
+
 			// Add cursor and pagination as URL parameters
 			queryParams := map[string]string{}
 			queryParams["per_page"] = fmt.Sprintf("%d", maxPerPage)
-			
+
 			if cursor != "" {
 				queryParams["cursor"] = cursor
 			}
-			
+
 			// Use the simple JSON string as request body
 			reqBody := []byte(requestBody)
 
 			// Create request headers
 			headers := map[string]string{
-				"Accept":           "application/vnd.censys.api.v3.search.v1+json",
-				"Content-Type":     "application/json",
-				"Authorization":    "Bearer " + randomApiKey.token,
+				"Accept":            "application/vnd.censys.api.v3.search.v1+json",
+				"Content-Type":      "application/json",
+				"Authorization":     "Bearer " + randomApiKey.token,
 				"X-Organization-ID": randomApiKey.orgID,
 			}
 
@@ -133,7 +133,7 @@ func (s *Source) Run(ctx context.Context, domain string, session *subscraping.Se
 				}
 				endpointURL += k + "=" + v
 			}
-			
+
 			// Make the API request
 			resp, err := session.HTTPRequest(
 				ctx,
@@ -160,9 +160,9 @@ func (s *Source) Run(ctx context.Context, domain string, session *subscraping.Se
 				resp.Body.Close()
 				return
 			}
-			
+
 			// Response received from Censys API
-			
+
 			// Parse the response
 			var censysResponse response
 			err = jsoniter.Unmarshal(respBody, &censysResponse)
@@ -177,13 +177,13 @@ func (s *Source) Run(ctx context.Context, domain string, session *subscraping.Se
 			if censysResponse.Result.Total > 0 {
 				fmt.Printf("[%s] Found %d certificate results for %s\n", s.Name(), censysResponse.Result.Total, domain)
 			}
-			
+
 			resp.Body.Close()
 
 			// Process the results
 			for _, hit := range censysResponse.Result.Hits {
 				// Process each hit
-				
+
 				// Extract names from the certificate data
 				if hit.CertificateV1.Resource.Names != nil {
 					for _, name := range hit.CertificateV1.Resource.Names {
@@ -231,8 +231,6 @@ func (s *Source) AddApiKeys(keys []string) {
 		return apiKey{token: k, orgID: v}
 	})
 }
-
-
 
 func (s *Source) Statistics() subscraping.Statistics {
 	return subscraping.Statistics{
